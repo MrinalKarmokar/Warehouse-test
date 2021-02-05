@@ -91,11 +91,15 @@
 				<div class="table-wrapper">
 					<table class="fl-table">
 						<tr>
+							<th>Team ID</th>
+							<th>Unique ID</th>
 							<th>Order ID</th>
 							<th>Item</th>
 							<th>Priority</th>
 							<th>Quantity</th>
 							<th>City</th>
+							<th>Order Dispatched</th>
+							<th>Order Shipped</th>
 						</tr>
 						<tbody id="tableContent">
 						</tbody>
@@ -165,11 +169,15 @@
 				for (var i = 0; i < data.feed.entry.length; ++i) {
 					var myData_map, myData_order;
 
-					trHTML += '<tr><td>' + data.feed.entry[i].gsx$orderid.$t +
+					trHTML += '<tr><td>' + data.feed.entry[i].gsx$teamid.$t +
+						'</td><td>' + data.feed.entry[i].gsx$uniqueid.$t +
+						'</td><td>' + data.feed.entry[i].gsx$orderid.$t +
 						'</td><td>' + data.feed.entry[i].gsx$item.$t +
 						'</td><td>' + data.feed.entry[i].gsx$priority.$t +
 						'</td><td>' + data.feed.entry[i].gsx$quantity.$t +
 						'</td><td>' + data.feed.entry[i].gsx$city.$t +
+						'</td><td>' + data.feed.entry[i].gsx$orderdispatched.$t +
+						'</td><td>' + data.feed.entry[i].gsx$ordershipped.$t +
 						'</td></tr>';
 
 				}
