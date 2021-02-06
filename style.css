@@ -16,7 +16,7 @@ body{
   font-weight: 700;
   font-size: 15px;
   text-shadow: .1rem .1rem .8rem black;
-  background-color: rgba(53, 23, 74, 0.6)!important;
+  background-color: rgba(0, 0, 0, 0.3)!important;
 }
 
 .navbar-nav li{
@@ -34,8 +34,8 @@ body{
 /* Landing Page css */
 
 .home-inner{
-  background-image: url(img/seamless-abs.jpg);
-  filter: blur(3px);
+  background-image: url(img/robot-arm.jpg);
+  filter: blur(2px);
 }
 
 .caption{
@@ -146,7 +146,7 @@ body{
   .fl-table tbody tr {
       display: table-cell;
   }
-  .fl-table tbody tr:nth-child(odd) {
+  .fl-table tbody tr:nth-child(odd){
       background: none;
   }
   .fl-table tr:nth-child(even) {
