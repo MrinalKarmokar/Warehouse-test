@@ -51,7 +51,7 @@
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link" href="#contact">Contact</a>
+							<a class="nav-link" href="mailto:eyrc.vb.0205@gmail.com?Subject=Query regarding order">Contact</a>
 						</li>
 
 						<li class="nav-item">
@@ -81,7 +81,7 @@
 		</div>
 		<!--- End Home Section -->
 
-		<!--- Start Home Section -->
+		<!--- Start Dashboard Section -->
 		<div id="dashboard" class="offset">
 			<div class="col-12 narrow text-center">
 				<h1>Dashboard</h1>
@@ -119,7 +119,19 @@
 				</div>
 			</div>
 		</div>
-		<!--- End Home Section -->
+		<!--- End dashboard Section -->
+
+		<!-- Contact Starts -->
+		<div id="contact" class="offset">
+			<div class="col-12 narrow text-center">
+				<h1></h1>
+			</div>
+
+			<div class="jumbotron">
+
+			</div>
+		</div>
+		<!-- Contact Ends -->
 
 		<!--- Script Source Files -->
 		<script src="js/jquery-3.3.1.min.js"></script>
@@ -199,7 +211,7 @@
             var map = L.map('map').setView([20.5937, 78.9629], 4);
             var jsonDataObject = [];
 
-            $.getJSON('https://spreadsheets.google.com/feeds/list/1ZIMPnqBGrNl7b_y75VRg4cT18tzp3-eC6DW5YcRDbe0/1/public/full?alt=json', function (data) {
+            $.getJSON('https://spreadsheets.google.com/feeds/list/1Mwq0p_xGAfNjDStlrIZpSGYfa-lUPLr7j79-OST82Zk/5/public/full?alt=json', function (data) {
                 for (var i = 0; i < data.feed.entry.length; ++i) {
 
                     var json_data = {
@@ -241,7 +253,7 @@
 			var jsonDataObject = [];
 			var graph_arr = [['Order ID', 'Time Taken', { role: 'style' }]];
 			var bar_color = [];
-			$.getJSON('https://spreadsheets.google.com/feeds/list/1ZIMPnqBGrNl7b_y75VRg4cT18tzp3-eC6DW5YcRDbe0/1/public/full?alt=json', function (data) {
+			$.getJSON('https://spreadsheets.google.com/feeds/list/1Mwq0p_xGAfNjDStlrIZpSGYfa-lUPLr7j79-OST82Zk/5/public/full?alt=json', function (data) {
 			for (var i = 0; i < data.feed.entry.length; ++i) {
 				var json_data = {
 				"OderID": data.feed.entry[i].gsx$orderid.$t,
