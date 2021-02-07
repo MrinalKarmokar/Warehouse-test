@@ -30,13 +30,12 @@
 		<!--- Start Home Section -->
 		<div id="home">
 			<!-- Start Navigation -->
-			<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+			<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
 				<a class="navbar-brand" href="#">
 					<h1>वर्गी बॉट #VB0205</h1>
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
 					<span class="navbar-toggler-icon">
-
 					</span>
 				</button>
 
@@ -51,11 +50,11 @@
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link" href="mailto:eyrc.vb.0205@gmail.com?Subject=Query regarding order">Contact</a>
+							<a class="nav-link" href="#aboutUs">About Us</a>
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link" href="#aboutUs">About Us</a>
+							<a class="nav-link" href="#contactUs">Contact Us</a>
 						</li>
 					</ul>
 				</div>
@@ -72,9 +71,9 @@
 			</div>
 
 			<div class="caption text-center">
-				<h1>Track Order</h1>
+				<h1>Dashboard</h1>
 				<a class="btn btn-outline-light btn-lg" href="#dashboard">
-					<h1>Dashboard</h1>
+					<h1>Track Order</h1>
 				</a>
 			</div>
 			<!-- End Landing Page -->
@@ -121,16 +120,87 @@
 		</div>
 		<!--- End dashboard Section -->
 
-		<!-- Contact Starts -->
-		<div id="contact" class="offset">
+		<!-- About Us Starts -->
+		<div id="aboutUs" class="offset">
 			<div class="col-12 narrow text-center">
-				<h1></h1>
+				<h1>About Us</h1>
+				<p>Engineering Better Tomorrow</p>
 			</div>
 
 			<div class="jumbotron">
+				<div class="row">
+					<div class="col-sm-6">
+						<div>
+							<h3 style="text-align: center;">Our Mission</h3>
+						</div>
+						<div>
+							<p style="padding: 50px;">
+								Delivery at its best.
+								Our aim is building trust and improving the lives of our customers,
+								small  businesses , enterprises and also our staff and partners as
+								we believe the secret to growth is helping others grow. We aim to
+								reach your high priority product to the earliest.
+							</p>
+						</div>
+					</div>
 
+					<div class="col-sm-6">
+						<div>
+							<h3 style="text-align: center;">Our Vision</h3>
+						</div>
+						<p style="padding: 50px;">
+							We are changing according to the needs of industry 4.0. Using cutting edge technology.
+							Made by humans for humans – intelligent, reliable and easy to use.
+							Shaping automation is our passion.
+							Our pioneering spirit drives us.
+							We engineer advantage. Together. Worldwide.
+						</p>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-6">
+						<div >
+							<h3 style="text-align: center;">Who are we</h3>
+						</div>
+						<div>
+							<p style="padding: 50px;">
+								We are a group of young youth who aim to change
+								the world through our Research, Innovation and Implementation.
+							</p>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
+		<!-- About Us Ends -->
+
+		<!-- Contact Starts -->
+		<div id="contactUs" class="offset">
+			<div class="col-12 narrow text-center">
+				<h1>Contact US</h1>
+			</div>
+
+			<div class="jumbotron">
+				<div class="row">
+					<div class="col-sm-6">
+						<div>
+							<h6>Email:<a href="mailto:eyrc.vb.0205@gmail.com"> EYRC.VB.0205@GMAIL.COM</a></h6>
+						</div>
+						<div>
+							<h6>HeadQuater: Mumbai</h6>
+						</div>
+					</div>
+
+					<div class="col-sm-6">
+						<div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<!-- Contact Ends -->
 
 		<!--- Script Source Files -->
@@ -202,51 +272,52 @@
 		}
 
 		function refreshMap() {
-            var container = L.DomUtil.get('map');
+			var container = L.DomUtil.get('map');
 
-            if (container != null) {
-                container._leaflet_id = null;
-            }
+			if (container != null) {
+				container._leaflet_id = null;
+			}
 
-            var map = L.map('map').setView([20.5937, 78.9629], 4);
-            var jsonDataObject = [];
+			var map = L.map('map').setView([20.5937, 78.9629], 4);
+			var jsonDataObject = [];
 
-            $.getJSON('https://spreadsheets.google.com/feeds/list/1Mwq0p_xGAfNjDStlrIZpSGYfa-lUPLr7j79-OST82Zk/5/public/full?alt=json', function (data) {
-                for (var i = 0; i < data.feed.entry.length; ++i) {
+			$.getJSON('https://spreadsheets.google.com/feeds/list/1Mwq0p_xGAfNjDStlrIZpSGYfa-lUPLr7j79-OST82Zk/5/public/full?alt=json', function (data) {
 
-                    var json_data = {
-                        "City": data.feed.entry[i].gsx$city.$t,
-                        "OderID": data.feed.entry[i].gsx$orderid.$t,
-                        "Item": data.feed.entry[i].gsx$item.$t,
-                        "Latitude": parseFloat(data.feed.entry[i].gsx$latitude.$t),
-                        "Longitude": parseFloat(data.feed.entry[i].gsx$longitude.$t)
-                    };
-                    jsonDataObject.push(json_data);
+				for (var i = 0; i < data.feed.entry.length; ++i) {
 
-                    for (var j = 0; j < jsonDataObject.length; j++) {
-                        var marker = L.marker(L.latLng(parseFloat(jsonDataObject[j].Latitude), parseFloat(jsonDataObject[j].Longitude)));
-                        marker.bindPopup(jsonDataObject[j].City, {
-                            autoClose: false
-                        });
-                        map.addLayer(marker);
-                        marker.on('click', onClick_Marker)
-                        // Attach the corresponding JSON data to your marker:
-                        marker.myJsonData = jsonDataObject[j];
+					var json_data = {
+						"City": data.feed.entry[i].gsx$city.$t,
+						"OderID": data.feed.entry[i].gsx$orderid.$t,
+						"Item": data.feed.entry[i].gsx$item.$t,
+						"Latitude": parseFloat(data.feed.entry[i].gsx$latitude.$t),
+						"Longitude": parseFloat(data.feed.entry[i].gsx$longitude.$t)
+					};
+					jsonDataObject.push(json_data);
 
-                        function onClick_Marker(e) {
-                            var marker = e.target;
-                            popup = L.popup()
-                            .setLatLng(marker.getLatLng())
-                            .setContent("Order ID: " + marker.myJsonData.OderID + " || Item: " + marker.myJsonData.Item)
-                            .openOn(map);
-                        }
+					for (var j = 0; j < jsonDataObject.length; j++) {
+						var marker = L.marker(L.latLng(parseFloat(jsonDataObject[j].Latitude), parseFloat(jsonDataObject[j].Longitude)));
+						marker.bindPopup(jsonDataObject[j].City, {
+							autoClose: false
+						});
+						map.addLayer(marker);
+						marker.on('click', onClick_Marker)
+						// Attach the corresponding JSON data to your marker:
+						marker.myJsonData = jsonDataObject[j];
 
-                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                        }).addTo(map);
-                    }
-                }
-            });
+						function onClick_Marker(e) {
+							var marker = e.target;
+							popup = L.popup()
+								.setLatLng(marker.getLatLng())
+								.setContent("Order ID: " + marker.myJsonData.OderID + " || Item: " + marker.myJsonData.Item)
+								.openOn(map);
+						}
+
+						L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+							attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+						}).addTo(map);
+					}
+				}
+			});
 		}
 
 		function refreshChart() {
@@ -299,7 +370,6 @@
 
 </html>
 
-<!--- Check out my courses! -->
-<div class="udemy-course" style="position: fixed; bottom: 0; right: 0; margin-bottom: -5px; z-index: 100;">
+<div style="position: fixed; bottom: 0; right: 0; margin-bottom: -5px; z-index: 100;">
 	वर्गी बॉट #VB0205
 </div>

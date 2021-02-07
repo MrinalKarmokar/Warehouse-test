@@ -16,7 +16,7 @@ body{
   font-weight: 700;
   font-size: 15px;
   text-shadow: .1rem .1rem .8rem black;
-  background-color: rgba(0, 0, 0, 0.3)!important;
+  background-color: rgba(0, 0, 0, 0.6)!important;
 }
 
 .navbar-nav li{
